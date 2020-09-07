@@ -33,6 +33,7 @@ stages:
     - task: Maven@3
       displayName: 'Maven Package'
       inputs:
+        codeCoverageFailIfEmpty: false
         mavenPomFile: 'pom.xml'
 
     - task: CopyFiles@2
