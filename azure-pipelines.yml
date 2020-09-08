@@ -6,17 +6,7 @@
 trigger:
 - master
 
-variables:
-
-  # Azure Resource Manager connection created during pipeline creation
-  azureSubscription: '4c943612-a64a-4324-8aed-34a56f6c6580'
-  
-  # Web app name
-  webAppName: 'mateus-linuxtest'
-
-  # Environment name
-  environmentName: 'mateus-linuxtest'
-  
+variables:  
   # Agent VM image name
   vmImageName: 'ubuntu-latest'
 
@@ -36,7 +26,7 @@ stages:
         mavenPomFile: 'pom.xml'
 
 - stage: 
-  displayName: 
+  displayName: 'Publish artifact'
   jobs:
     - job:
       displayName: 'Publish artifact'
