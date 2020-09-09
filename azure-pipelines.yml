@@ -38,15 +38,15 @@ stages:
             SourceFolder: '$(System.DefaultWorkingDirectory)'
             Contents: '**/target/*.?(war|jar)'
             TargetFolder: $(Build.ArtifactStagingDirectory)
+        - task: CopyFiles@2
+          displayName: 'Copy Settings to artifact staging directory'
+          inputs:
+            SourceFolder: '$(System.DefaultWorkingDirectory)'
+            Contents: '**/src/**/resources/*.json'
+            TargetFolder: $(Build.ArtifactStagingDirectory)
 
         - upload: $(Build.ArtifactStagingDirectory)
           artifact: drop
         
-        - script: ls $(Build.ArtifactStagingDirectory)
+        - script: ls $(System.DefaultWorkingDirectory)
           displayName: 'Create Settings folder in Artifact Staging Directory'
-
-        - task: PublishBuildArtifacts@1
-          inputs:
-            PathtoPublish: '$(System.DefaultWorkingDirectory)/**/src/**/resources/AppConfig.json'
-            ArtifactName: 'settings'
-            publishLocation: Container
