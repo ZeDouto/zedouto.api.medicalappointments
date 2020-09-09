@@ -42,7 +42,7 @@ stages:
         - upload: $(Build.ArtifactStagingDirectory)
           artifact: drop
         
-        - script: mkdir $(Build.ArtifactStagingDirectory)/Settings
+        - script: ls $(Build.ArtifactStagingDirectory)
           displayName: 'Create Settings folder in Artifact Staging Directory'
 
         - task: PublishBuildArtifacts@1
