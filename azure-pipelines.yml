@@ -27,7 +27,7 @@ stages:
         mavenPomFile: 'pom.xml'
 
 - stage: 
-  displayName: 'Publish artifact'
+  displayName: 'Copy and Publish artifact/config files'
   jobs:
     - job:
       displayName: 'Publish artifact'
@@ -38,6 +38,19 @@ stages:
             SourceFolder: '$(System.DefaultWorkingDirectory)'
             Contents: '**/target/*.?(war|jar)'
             TargetFolder: $(Build.ArtifactStagingDirectory)
+        - task: CopyFiles@2
+          displayName: 'Copy Settings to artifact staging directory'
+          inputs:
+            SourceFolder: '$(System.DefaultWorkingDirectory)'
+            Contents: '**/src/**/resources/*.json'
+            TargetFolder: $(Build.ArtifactStagingDirectory)
 
         - upload: $(Build.ArtifactStagingDirectory)
           artifact: drop
+        
+        - script: | 
+            ls $(System.DefaultWorkingDirectory)
+            ls $(System.DefaultWorkingDirectory)/src
+            ls $(System.DefaultWorkingDirectory)/src/main
+            ls $(System.DefaultWorkingDirectory)/src/main/resources
+          displayName: 'List directories'
