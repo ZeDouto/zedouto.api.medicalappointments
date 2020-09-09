@@ -47,7 +47,6 @@ stages:
 
         - task: PublishBuildArtifacts@1
           inputs:
-            TargetPath: '**/src/**/resources/AppConfig.json'
-            PathtoPublish: '$(Build.ArtifactStagingDirectory)/Settings'
-            ArtifactName: 'drop'
-            publishLocation: 'Container'
+            PathtoPublish: '**/src/**/resources/AppConfig.json'
+            ArtifactName: 'settings'
+            publishLocation: Container
