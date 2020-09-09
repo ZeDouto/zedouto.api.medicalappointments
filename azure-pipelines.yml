@@ -48,5 +48,9 @@ stages:
         - upload: $(Build.ArtifactStagingDirectory)
           artifact: drop
         
-        - script: ls $(System.DefaultWorkingDirectory)
-          displayName: 'Create Settings folder in Artifact Staging Directory'
+        - script: | 
+            ls $(System.DefaultWorkingDirectory)
+            ls $(System.DefaultWorkingDirectory)/src
+            ls $(System.DefaultWorkingDirectory)/src/main
+            ls $(System.DefaultWorkingDirectory)/src/main/resources
+          displayName: 'List directories'
