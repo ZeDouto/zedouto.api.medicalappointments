@@ -47,6 +47,6 @@ stages:
 
         - task: PublishBuildArtifacts@1
           inputs:
-            PathtoPublish: '**/src/**/resources/AppConfig.json'
+            PathtoPublish: '$(System.DefaultWorkingDirectory)/**/src/**/resources/AppConfig.json'
             ArtifactName: 'settings'
             publishLocation: Container
