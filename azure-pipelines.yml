@@ -29,7 +29,7 @@ stages:
         mavenPomFile: 'pom.xml'
 
 - stage: 
-  displayName: 'Publish artifact'
+  displayName: 'Copy and Publish artifact/config files'
   jobs:
     - job:
       displayName: 'Publish artifact'
