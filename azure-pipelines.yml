@@ -5,6 +5,7 @@
 
 trigger:
 - master
+- dev
 
 variables:  
   # Agent VM image name
