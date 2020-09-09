@@ -1,0 +1,7 @@
+{
+  "source": "jdbc:mysql://localhost:3306/tcc?useTimezone=true&serverTimezone=America/Sao_Paulo",
+  "user": "",
+  "password": "",
+  "dialect": "org.hibernate.dialect.MySQL8Dialect",
+  "port": 8080
+}
