@@ -1,7 +1,7 @@
 {
-  "source": "#{source}",
-  "user": "#{user}",
-  "password": "#{password}",
-  "dialect": "#{dialect}",
-  "port": "#{port}"
+  "source": "#{source}#",
+  "user": "#{user}#",
+  "password": "#{password}#",
+  "dialect": "#{dialect}#",
+  "port": "#{port}#"
 }
