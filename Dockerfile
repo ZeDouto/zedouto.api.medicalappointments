@@ -8,4 +8,4 @@ FROM openjdk:8-jre-alpine
 COPY --from=build /app/target/tcc-0.0.1-SNAPSHOT.jar /app/tcc-0.0.1-SNAPSHOT.jar
 WORKDIR /app
 EXPOSE 8080
-CMD ["/usr/bin/java", "-jar", "/app/tcc-0.0.1-SNAPSHOT.jar.jar"]
+CMD ["/usr/bin/java", "-jar", "/app/tcc-0.0.1-SNAPSHOT.jar"]
