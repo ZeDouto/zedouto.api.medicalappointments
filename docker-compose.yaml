@@ -1,0 +1,29 @@
+version: '3.3'
+services:
+
+  mysql:
+    image: mysql:5.7
+    container_name: my_sql
+    volumes:
+       #- ./deploy_structure.sql:/docker-entrypoint-initdb.d/deploy_structure.sql
+       - mysql-data:/var/lib/mysql
+    environment:
+        MYSQL_DATABASE: medicalappointment
+        MYSQL_ROOT_PASSWORD: A1a@123456
+    ports:
+        - "3306:3306"
+  application:
+      depends_on:
+        - mysql
+      build: .
+      ports:
+        - "8080:80"
+      restart: always
+      #volumes:
+      #  - ./:/app/
+      environment:
+        MYSQL_HOST: zedouto-db.mysql.database.azure.com
+        MYSQL_DB_USERNAME: zedouto@zedouto-db
+        MYSQL_DB_PASSWORD: A1a@123456
+volumes:
+  mysql-data:
