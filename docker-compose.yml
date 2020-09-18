@@ -26,7 +26,7 @@ services:
         MYSQL_DB_USERNAME: zedouto@zedouto-db
         MYSQL_DB_PASSWORD: A1a@123456
         MYSQL_DIALECT: org.hibernate.dialect.MySQL57Dialect
-          MYSQL_STRATEGY: org.hibernate.boot.model.naming.PhysicalNamingStrategyStandardImpl
+        MYSQL_STRATEGY: org.hibernate.boot.model.naming.PhysicalNamingStrategyStandardImpl
 volumes:
   mysql-data:
     driver: local
