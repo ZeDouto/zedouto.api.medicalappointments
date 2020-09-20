@@ -13,6 +13,6 @@ stages:
     - task: Docker@2
       inputs:
         containerRegistry: 'DockerHub - souzamateus99'
-        repository: 'medical-appointment-api'
+        repository: 'souzamateus99/medical-appointment-api'
         command: 'buildAndPush'
         Dockerfile: 'Dockerfile'
