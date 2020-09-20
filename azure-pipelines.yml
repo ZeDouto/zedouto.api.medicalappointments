@@ -2,26 +2,6 @@ trigger:
 - dev
 - master
 
-stages:
-- stage: Configuration
-  displayName: Config stage
-  jobs:
-    - job:
-      displayName: 'Replace tokens in AppConfig.json'
-      steps:
-        - task: replacetokens@3
-          inputs:
-            rootDirectory: '$(System.DefaultWorkingDirectory)/_ZeDouto.zedouto.api.medicalappointments/drop/src/main/resources'
-            targetFiles: 'AppConfig.json'
-            encoding: 'auto'
-            writeBOM: true
-            actionOnMissing: 'warn'
-            keepToken: false
-            tokenPrefix: '#{'
-            tokenSuffix: '}#'
-            useLegacyPattern: false
-            enableTelemetry: true
-
 - stage: Build
   jobs:
   - job:
