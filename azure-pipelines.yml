@@ -3,10 +3,10 @@ trigger:
 - master
 
 stages:
-- stage: 
+- stage: MavenBuild
   displayName: 'Maven Build'
   jobs:
-    - job: MavenBuild
+    - job:
       steps:
         - task: Maven@3
           inputs:
@@ -16,7 +16,7 @@ stages:
 
 - stage:
   displayName: 'Docker build and Push'
-  dependsOn: MavenBuild
+  dependsOn: 'MavenBuild'
   condition: in(variables['Build.SourceBranch'], 'refs/heads/master', 'refs/heads/dev')
   jobs:
   - job:
