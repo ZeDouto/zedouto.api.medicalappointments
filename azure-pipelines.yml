@@ -5,10 +5,15 @@ trigger:
       - dev
 
 stages:
+- stage: Docker Configuration
+  jobs:
+    - job:
+      steps:
+        - script: docker login
 - stage: Build
   jobs:
   - job:
-    displayName: 'Build Docker image'
+    displayName: 'Build and Push Docker an image'
     steps:
     - task: Docker@2
       inputs:
