@@ -8,22 +8,24 @@ stages:
 - stage: Build
   jobs:
   - job:
+    displayName: 'Build Docker image'
     steps:
     - task: Docker@2
       displayName: 'Build an image'
       inputs:
         containerRegistry: 'DockerHub - souzamateus99'
-        repository: 'medical-appointment-api'
+        repository: 'souzamateus99/medical-appointment-api'
         command: 'build'
         Dockerfile: 'Dockerfile'
 
 - stage: 'Push'
   jobs:
     - job:
+      displayName: 'Push Docker image'
       steps:
       - task: Docker@2
         displayName: 'Push an image'
         inputs:
           containerRegistry: 'DockerHub - souzamateus99'
-          repository: 'medical-appointment-api'
+          repository: 'souzamateus99/medical-appointment-api'
           command: 'push'
