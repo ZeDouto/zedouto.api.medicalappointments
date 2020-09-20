@@ -3,7 +3,21 @@ trigger:
 - master
 
 stages:
-- stage: Build
+- stage: 
+  displayName: 'Maven Build'
+  jobs:
+    - job: MavenBuild
+      steps:
+        - task: Maven@3
+          inputs:
+            mavenPomFile: 'pom.xml'
+            javaHomeOption: 'JDKVersion'
+            mavenVersionOption: 'Default'
+
+- stage:
+  displayName: 'Docker build and Push'
+  dependsOn: MavenBuild
+  condition: in(variables['Build.SourceBranch'], 'refs/heads/master', 'refs/heads/dev')
   jobs:
   - job:
     displayName: 'Build and Push Docker an image'
