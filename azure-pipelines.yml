@@ -5,12 +5,6 @@ trigger:
       - dev
 
 stages:
-- stage:
-  displayName: 'Docker Configuration'
-  jobs:
-    - job:
-      steps:
-        - script: docker login -u souzamateus99 -p matcar123
 - stage: Build
   jobs:
   - job:
