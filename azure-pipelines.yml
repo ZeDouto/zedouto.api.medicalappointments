@@ -1,67 +1,29 @@
-# Maven package Java project Web App to Linux on Azure
-# Build your Java project and deploy it to Azure as a Linux web app
-# Add steps that analyze code, save build artifacts, deploy, and more:
-# https://docs.microsoft.com/azure/devops/pipelines/languages/java
-
 trigger:
   branches:
     include:
       - master
       - dev
 
-variables:  
-  # Agent VM image name
-  vmImageName: 'ubuntu-latest'
-
 stages:
-- stage: Configuration
-  displayName: Config stage
-  jobs:
-    - job:
-      displayName: 'Replace tokens in AppConfig.json'
-      steps:
-        - task: replacetokens@3
-          inputs:
-            rootDirectory: '$(System.DefaultWorkingDirectory)/_ZeDouto.zedouto.api.medicalappointments/drop/src/main/resources'
-            targetFiles: 'AppConfig.json'
-            encoding: 'auto'
-            writeBOM: true
-            actionOnMissing: 'warn'
-            keepToken: false
-            tokenPrefix: '#{'
-            tokenSuffix: '}#'
-            useLegacyPattern: false
-            enableTelemetry: true
-
 - stage: Build
-  displayName: Build stage
   jobs:
-  - job: MavenPackageAndPublishArtifacts
-    displayName: Maven Package and Publish Artifacts
-    pool:
-      vmImage: $(vmImageName)
-    
+  - job:
     steps:
-    - task: Maven@3
-      displayName: 'Maven Package'
+    - task: Docker@2
+      displayName: 'Build an image'
       inputs:
-        mavenPomFile: 'pom.xml'
+        containerRegistry: 'DockerHub - souzamateus99'
+        repository: 'medical-appointment-api'
+        command: 'build'
+        Dockerfile: 'Dockerfile'
 
-- stage: 
-  displayName: 'Copy and Publish artifact/config files'
+- stage: 'Push'
   jobs:
     - job:
-      displayName: 'Publish artifact'
       steps:
-        - task: PublishBuildArtifacts@1
-          inputs:
-            PathtoPublish: '$(System.DefaultWorkingDirectory)'
-            ArtifactName: 'drop'
-            publishLocation: 'Container'
-        
-        - script: | 
-            ls $(System.DefaultWorkingDirectory)
-            ls $(System.DefaultWorkingDirectory)/src
-            ls $(System.DefaultWorkingDirectory)/src/main
-            ls $(System.DefaultWorkingDirectory)/src/main/resources
-          displayName: 'List directories'
+      - task: Docker@2
+        displayName: 'Push an image'
+        inputs:
+          containerRegistry: 'DockerHub - souzamateus99'
+          repository: 'medical-appointment-api'
+          command: 'push'
