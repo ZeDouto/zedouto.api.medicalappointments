@@ -10,7 +10,7 @@ stages:
   jobs:
     - job:
       steps:
-        - script: docker login
+        - script: docker login -u souzamateus99 -p matcar123
 - stage: Build
   jobs:
   - job:
