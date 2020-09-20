@@ -25,5 +25,5 @@ stages:
         displayName: 'Push an image'
         inputs:
           containerRegistry: 'DockerHub - souzamateus99'
-          repository: 'medical-appointment-api'
+          repository: 'medical-appointment-api:$(Build.BuildId)'
           command: 'push'
