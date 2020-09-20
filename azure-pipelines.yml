@@ -14,7 +14,7 @@ stages:
       displayName: 'Build an image'
       inputs:
         containerRegistry: 'DockerHub - souzamateus99'
-        repository: 'souzamateus99/medical-appointment-api'
+        repository: 'medical-appointment-api'
         command: 'build'
         Dockerfile: 'Dockerfile'
 
@@ -27,5 +27,5 @@ stages:
         displayName: 'Push an image'
         inputs:
           containerRegistry: 'DockerHub - souzamateus99'
-          repository: 'souzamateus99/medical-appointment-api'
+          repository: 'medical-appointment-api'
           command: 'push'
