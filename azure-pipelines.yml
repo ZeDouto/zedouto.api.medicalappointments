@@ -5,7 +5,8 @@ trigger:
       - dev
 
 stages:
-- stage: Docker Configuration
+- stage:
+  displayName: 'Docker Configuration'
   jobs:
     - job:
       steps:
