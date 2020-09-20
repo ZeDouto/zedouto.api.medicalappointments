@@ -2,6 +2,7 @@ trigger:
 - dev
 - master
 
+stages:
 - stage: Build
   jobs:
   - job:
