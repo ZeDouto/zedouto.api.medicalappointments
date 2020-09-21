@@ -2,6 +2,7 @@ package com.api.tcc.utils;
 
 import javax.validation.ConstraintViolationException;
 
+import javassist.NotFoundException;
 import org.springframework.dao.DataIntegrityViolationException;
 import org.springframework.http.HttpHeaders;
 import org.springframework.http.HttpStatus;
@@ -29,6 +30,11 @@ public class ResourceException extends ResponseEntityExceptionHandler {
 			ConstraintViolationException.class })
 	public final ResponseEntity<Object> dataIntegrityViolationException(Exception ex, WebRequest request) {
 		return new ResponseEntity<Object>(ex.getMessage(), new HttpHeaders(), HttpStatus.BAD_REQUEST);
+	}
+
+	@ExceptionHandler({ NotFoundException.class })
+	public final ResponseEntity<Object> handleNotFoundException(Exception ex, WebRequest request) {
+		return new ResponseEntity<>(ex.getMessage(), new HttpHeaders(), HttpStatus.NOT_FOUND);
 	}
 
 }
