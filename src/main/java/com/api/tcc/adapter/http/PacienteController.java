@@ -9,6 +9,7 @@ import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -34,5 +35,10 @@ public class PacienteController {
 	@GetMapping
 	public ResponseEntity<List<Paciente>> get() {
 		return new ResponseEntity<>(service.getAll(), HttpStatus.OK);
+	}
+	
+	@GetMapping(value = Routes.PATH_ID)
+	public ResponseEntity<Paciente> getId(@PathVariable(name = "id") String id) {
+		return new ResponseEntity<>(service.getId(id), HttpStatus.OK);
 	}
 }

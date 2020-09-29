@@ -24,4 +24,5 @@ public class ConsultaService {
 	public List<Consulta> getAll(){
 		return ConsultaMapper.converterListaDTO(repository.findAll());
 	}
+
 }
