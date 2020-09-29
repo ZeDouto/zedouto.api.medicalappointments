@@ -1,8 +1,6 @@
 package com.api.tcc.adapter.mapper;
 
-import com.api.tcc.adapter.entity.HospitalEntity;
 import com.api.tcc.adapter.entity.UsuarioEntity;
-import com.api.tcc.core.model.Hospital;
 import com.api.tcc.core.model.Usuario;
 import org.modelmapper.ModelMapper;
 import org.springframework.beans.factory.annotation.Autowired;

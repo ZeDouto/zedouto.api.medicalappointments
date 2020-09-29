@@ -1,7 +1,6 @@
 package com.api.tcc.adapter;
 
 import com.api.tcc.adapter.entity.UsuarioEntity;
-import com.api.tcc.core.model.Usuario;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Repository;
 
