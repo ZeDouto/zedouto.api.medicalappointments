@@ -12,7 +12,6 @@ import com.api.tcc.core.model.Paciente;
 @Service
 public class PacienteService {
 	
-
 	@Autowired
 	private PacienteRepository repository;
 		
@@ -23,6 +22,10 @@ public class PacienteService {
 	
 	public List<Paciente> getAll(){
 		return PacienteMapper.converterListaDTO(repository.findAll());
+	}
+	
+	public Paciente getId(String id){
+		return PacienteMapper.converterDTO(repository.findById(id).orElse(null));
 	}
 
 }

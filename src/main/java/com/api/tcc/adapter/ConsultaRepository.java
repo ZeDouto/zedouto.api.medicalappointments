@@ -7,5 +7,5 @@ import com.api.tcc.adapter.entity.ConsultaEntity;
 
 @Repository
 public interface ConsultaRepository extends JpaRepository<ConsultaEntity, String> {
-
+	
 }

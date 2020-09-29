@@ -24,4 +24,8 @@ public class MedicoService {
 		return MedicoMapper.converterListaDTO(repository.findAll());
 	}
 	
+	public Medico getId(String id){
+		return MedicoMapper.converterDTO(repository.findById(id).orElse(null));
+	}
+	
 }

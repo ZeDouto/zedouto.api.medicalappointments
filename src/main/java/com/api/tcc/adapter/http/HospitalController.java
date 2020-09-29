@@ -9,6 +9,7 @@ import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -34,5 +35,10 @@ public class HospitalController {
 	@GetMapping
 	public ResponseEntity<List<Hospital>> get() {
 		return new ResponseEntity<>(service.getAll(), HttpStatus.OK);
+	}
+	
+	@GetMapping(value = Routes.PATH_CEP)
+	public ResponseEntity<List<Hospital>> getId(@PathVariable(name = "cep") String cep) {
+		return new ResponseEntity<>(service.getByCep(cep), HttpStatus.OK);
 	}
 }
