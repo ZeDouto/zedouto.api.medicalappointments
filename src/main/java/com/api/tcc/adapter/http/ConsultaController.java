@@ -8,11 +8,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.validation.annotation.Validated;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 import com.api.tcc.adapter.http.routes.Routes;
 import com.api.tcc.core.model.Consulta;
@@ -34,5 +30,10 @@ public class ConsultaController {
 	@GetMapping
 	public ResponseEntity<List<Consulta>> get() {
 		return new ResponseEntity<>(service.getAll(), HttpStatus.OK);
+	}
+
+	@GetMapping(value = Routes.PARAM_CPF)
+	public ResponseEntity<List<Consulta>> getByPaciente(@RequestParam(name = "cpf") String cpf) {
+		return new ResponseEntity<>(service.getByPaciente(cpf), HttpStatus.OK);
 	}
 }
