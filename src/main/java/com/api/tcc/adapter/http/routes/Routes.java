@@ -12,6 +12,6 @@ public class Routes {
 	
 	public static final String PATH_ID = "/{id}";
 	public static final String PATH_CEP = "/{cep}";
-	public static final String PARAM_CPF = "?cpf={cpf}";
+	public static final String PATH_CPF = "/{cpf}";
 
 }

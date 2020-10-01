@@ -32,8 +32,8 @@ public class ConsultaController {
 		return new ResponseEntity<>(service.getAll(), HttpStatus.OK);
 	}
 
-	@GetMapping(value = Routes.PARAM_CPF)
-	public ResponseEntity<List<Consulta>> getByPaciente(@RequestParam(name = "cpf") String cpf) {
+	@GetMapping(value = Routes.PATH_CPF)
+	public ResponseEntity<List<Consulta>> getByPaciente(@PathVariable(name = "cpf") String cpf) {
 		return new ResponseEntity<>(service.getByPaciente(cpf), HttpStatus.OK);
 	}
 }
