@@ -12,6 +12,7 @@ public class Routes {
 	
 	public static final String PATH_ID = "/{id}";
 	public static final String PATH_CEP = "/{cep}";
-	public static final String PATH_CPF = "/{cpf}";
+	public static final String PATH_CONSULTA_BY_PACIENTE= "/paciente/{cpf}";
+	public static final String PATH_CONSULTA_BY_MEDICO = "/medico/{cpf}";
 
 }
