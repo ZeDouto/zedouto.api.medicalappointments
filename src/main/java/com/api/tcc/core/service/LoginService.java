@@ -20,11 +20,12 @@ public class LoginService  {
         return UsuarioMapper.converterDTO(repository.save(UsuarioMapper.converterEntity(model)));
     }
 
-    public Usuario get(String crm, String senha) throws NotFoundException {
-        Optional<UsuarioEntity> usuario = repository.findByCrmAndSenha(crm, senha);
+    public Usuario get(Usuario model) throws NotFoundException {
+        Optional<UsuarioEntity> usuario = repository.findByCrmAndSenha(model.getCrm(), model.getSenha());
 
         if(usuario.isPresent()){
-            return UsuarioMapper.converterDTO(usuario.get());
+        	UsuarioEntity encontrado = usuario.get();
+            return Usuario.builder().nome(encontrado.getNome()).crm(encontrado.getCrm()).build();
         }
 
         throw new NotFoundException("Usuário não foi encontrado");

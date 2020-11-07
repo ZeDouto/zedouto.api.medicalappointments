@@ -49,4 +49,7 @@ public class ConsultaEntity implements Serializable {
 	
 	@Column(name = "EXAMES_REALIZADOS")
 	private String examesRealizados;
+	
+	@Column(name = "RECEITA")
+	private String receita;
 }
