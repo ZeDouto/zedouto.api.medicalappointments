@@ -34,4 +34,6 @@ public class Consulta implements Serializable {
 	private String sintomasApresentados;
 	
 	private String examesRealizados;
+	
+	private String receita;
 }
