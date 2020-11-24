@@ -22,7 +22,6 @@ public class Usuario implements Serializable {
     @NotNull(message = NOT_NULL)
     private String crm;
 
-    @NotNull(message = NOT_NULL)
     private String nome;
 
     @NotNull(message = NOT_NULL)

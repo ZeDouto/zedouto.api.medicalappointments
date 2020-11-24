@@ -7,8 +7,13 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import com.api.tcc.adapter.ConsultaRepository;
+import com.api.tcc.adapter.entity.ConsultaEntity;
 import com.api.tcc.adapter.mapper.ConsultaMapper;
+import com.api.tcc.adapter.mapper.MedicoMapper;
+import com.api.tcc.adapter.mapper.PacienteMapper;
 import com.api.tcc.core.model.Consulta;
+import com.api.tcc.core.model.Medico;
+import com.api.tcc.core.model.Paciente;
 
 @Service
 public class ConsultaService {
@@ -21,7 +26,25 @@ public class ConsultaService {
 		return ConsultaMapper.converterDTO(repository.save(ConsultaMapper.converterEntity(model)));
 	}
 	
-	public List<Consulta> getAll(){
+	public List<Consulta> getAll() {
 		return ConsultaMapper.converterListaDTO(repository.findAll());
+	}
+	
+	public Consulta getId(String id) {
+		return ConsultaMapper.converterDTO(repository.findById(id).orElse(new ConsultaEntity()));
+	}
+
+	public List<Consulta> getByPaciente(String cpf) {
+		Paciente paciente = new Paciente();
+		paciente.setCpf(cpf);
+
+		return ConsultaMapper.converterListaDTO(repository.findByPaciente(PacienteMapper.converterEntity(paciente)).orElse(null));
+	}
+	
+	public List<Consulta> getByMedico(String cpf) {
+		Medico medico = new Medico();
+		medico.setCpf(cpf);
+		
+		return ConsultaMapper.converterListaDTO(repository.findByMedico(MedicoMapper.converterEntity(medico)).orElse(null));
 	}
 }

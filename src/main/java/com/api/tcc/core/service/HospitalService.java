@@ -24,4 +24,8 @@ public class HospitalService {
 	public List<Hospital> getAll(){
 		return HospitalMapper.converterListaDTO(repository.findAll());
 	}
+	
+	public List<Hospital> getByCep(String cep) {
+		return HospitalMapper.converterListaDTO(repository.findByCep(cep).orElse(null));
+	}
 }

@@ -16,13 +16,13 @@ public class LoginController {
     @Autowired
     private LoginService service;
 
-    @PostMapping
+    @PostMapping(value = Routes.PATH_CADASTRO)
     public ResponseEntity<Usuario> post(@RequestBody Usuario usuario){
         return new ResponseEntity<>(service.save(usuario), HttpStatus.CREATED);
     }
 
-    @GetMapping
-    public ResponseEntity<Usuario> login(@RequestParam(name = "crm") String crm, @RequestParam(name = "senha") String senha) throws NotFoundException, NotFoundException {
-        return new ResponseEntity<>(service.get(crm, senha), HttpStatus.OK);
+    @PostMapping
+    public ResponseEntity<Usuario> login(@RequestBody Usuario usuario)throws NotFoundException, NotFoundException {
+        return new ResponseEntity<>(service.get(usuario), HttpStatus.OK);
     }
 }
