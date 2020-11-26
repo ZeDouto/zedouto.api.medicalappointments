@@ -41,9 +41,9 @@ public class ConsultaService {
 		return ConsultaMapper.converterListaDTO(repository.findByPaciente(PacienteMapper.converterEntity(paciente)).orElse(null));
 	}
 	
-	public List<Consulta> getByMedico(String cpf) {
+	public List<Consulta> getByMedico(Integer crm) {
 		Medico medico = new Medico();
-		medico.setCpf(cpf);
+		medico.setCrm(crm);
 		
 		return ConsultaMapper.converterListaDTO(repository.findByMedico(MedicoMapper.converterEntity(medico)).orElse(null));
 	}
