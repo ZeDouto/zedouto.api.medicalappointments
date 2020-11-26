@@ -49,7 +49,7 @@ public class ConsultaController {
 	}
 
 	@GetMapping(value = Routes.PATH_CONSULTA_BY_MEDICO)
-	public ResponseEntity<List<Consulta>> getByMedico(@PathVariable(name = "cpf") Integer cpf) {
-		return new ResponseEntity<>(service.getByMedico(cpf), HttpStatus.OK);
+	public ResponseEntity<List<Consulta>> getByMedico(@PathVariable(name = "cpf") Integer crm) {
+		return new ResponseEntity<>(service.getByMedico(crm), HttpStatus.OK);
 	}
 }

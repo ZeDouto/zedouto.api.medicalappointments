@@ -7,7 +7,9 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import com.api.tcc.adapter.ConsultaRepository;
+import com.api.tcc.adapter.MedicoRepository;
 import com.api.tcc.adapter.entity.ConsultaEntity;
+import com.api.tcc.adapter.entity.MedicoEntity;
 import com.api.tcc.adapter.mapper.ConsultaMapper;
 import com.api.tcc.adapter.mapper.MedicoMapper;
 import com.api.tcc.adapter.mapper.PacienteMapper;
@@ -20,6 +22,9 @@ public class ConsultaService {
 
 	@Autowired
 	private ConsultaRepository repository;
+	
+	@Autowired
+	private MedicoRepository medicoRepo;
 		
 	public Consulta save(Consulta model) throws Exception {
 		model.setId(UUID.randomUUID().toString().toUpperCase());
@@ -42,9 +47,9 @@ public class ConsultaService {
 	}
 	
 	public List<Consulta> getByMedico(Integer crm) {
-		Medico medico = new Medico();
-		medico.setCrm(crm);
 		
-		return ConsultaMapper.converterListaDTO(repository.findByMedico(MedicoMapper.converterEntity(medico)).orElse(null));
+		MedicoEntity medico = medicoRepo.findByCrm(crm).get();
+		
+		return ConsultaMapper.converterListaDTO(repository.findByMedico(medico).orElse(null));
 	}
 }
