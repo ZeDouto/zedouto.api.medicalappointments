@@ -20,7 +20,7 @@ public class HospitalMedicoEntity implements Serializable {
 
     @Id
     @Column(name = "id")
-    private long id;
+    private int id;
 
     @ManyToOne
     @JoinColumn(name = "HOSPITAL")
