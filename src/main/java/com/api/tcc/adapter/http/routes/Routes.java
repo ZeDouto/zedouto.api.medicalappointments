@@ -16,5 +16,5 @@ public class Routes {
 	public static final String PATH_CADASTRO = "/cadastro";
 	public static final String PATH_CONSULTA_BY_PACIENTE= "/paciente/{cpf}";
 	public static final String PATH_CONSULTA_BY_MEDICO = "/medico/{cpf}";
-	public static final String PATH_HOSPITAL_ID = "{hospitalId}";
+	public static final String PATH_HOSPITAL_ID = "/{hospitalId}";
 }
