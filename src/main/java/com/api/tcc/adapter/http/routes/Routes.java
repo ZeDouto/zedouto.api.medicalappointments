@@ -9,11 +9,12 @@ public class Routes {
 	public static final String ROUTE_CONSULTA = CONTEXTO_API + "/consultas";
 	public static final String ROUTE_HEALTH_CHECK = CONTEXTO_API + "/healthz";
 	public static final String ROUTE_LOGIN = CONTEXTO_API + "/login";
-	
+	public static final String ROUTE_HOSPITAL_MEDICO = CONTEXTO_API + "/medicos/hospitais";
+
 	public static final String PATH_ID = "/{id}";
 	public static final String PATH_CEP = "/{cep}";
 	public static final String PATH_CADASTRO = "/cadastro";
 	public static final String PATH_CONSULTA_BY_PACIENTE= "/paciente/{cpf}";
 	public static final String PATH_CONSULTA_BY_MEDICO = "/medico/{cpf}";
-
+	public static final String PATH_HOSPITAL_ID = "/{hospitalId}";
 }
