@@ -29,6 +29,11 @@ public class HospitalMedicoController {
     @Autowired
     private HospitalMedicoService service;
 
+    @PostMapping
+    public ResponseEntity<List<HospitalMedico>> post(@Valid @RequestBody List<HospitalMedico> hospitalMedicos) {
+        return new ResponseEntity<>(service.save(hospitalMedicos), HttpStatus.CREATED);
+    }
+
     @GetMapping(value = Routes.PATH_HOSPITAL_ID)
     public ResponseEntity<List<HospitalMedico>> getHospital(@PathVariable(name = "hospitalId") String id) {
         return new ResponseEntity<>(service.getByHospital(id), HttpStatus.OK);

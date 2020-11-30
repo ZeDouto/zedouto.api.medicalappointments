@@ -17,6 +17,10 @@ public class HospitalMedicoService {
     @Autowired
     private HospitalMedicoRepository repository;
 
+    public List<HospitalMedico> save(List<HospitalMedico> hospitalMedicos) {
+        return HospitalMedicoMapper.converterListaDTO(repository.saveAll(HospitalMedicoMapper.converterListaEntity(hospitalMedicos)));
+    }
+
     public List<HospitalMedico> getByHospital(String hospitalId) {
         HospitalEntity hospital = new HospitalEntity();
         hospital.setId(hospitalId);

@@ -18,7 +18,9 @@ public class HospitalMedico implements Serializable {
     private static final long serialVersionUID = -4777023947908097374L;
 
     private static final String NOT_NULL = "CAMPO NÃO PODE SER NULO";
-    
+
+    private int id;
+
     private Hospital hospital;
 
     private String Medico;
